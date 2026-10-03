@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Warren Ivan Baluis | Quantity Estimator &amp; Cost Engineer</title>
+<meta name="description" content="Professional portfolio of Warren Ivan Baluis, Quantity Estimator and Cost Engineer specializing in quantity takeoff, cost estimation, BOQ preparation, and construction cost analysis.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📐</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   THEME — "Drafting Sheet"
+   Navy ink on drawing-paper white, amber used only like a
+   dimension line. Change colors here.
+   ========================================================= */
+:root{
+  --paper:#FAFBFC; --paper-2:#F1F4F8; --line:#DCE2EA;
+  --ink:#14233A; --muted:#566275; --card:#FFFFFF;
+  --navy:#14233A; --navy-2:#1C2E4A; --on-navy:#EEF2F7; --on-navy-muted:#A3B0C2;
+  --amber:#C98A2E; --amber-text:#9A6414; --on-amber:#14233A;
+  --radius:6px; --max:1180px;
+  --head:"Sora", "Segoe UI", system-ui, sans-serif;
+  --body:"DM Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1726; --paper-2:#121D2F; --line:#24334A;
+    --ink:#E6ECF3; --muted:#9AA8BB; --card:#142037;
+    --navy:#09111D; --navy-2:#111C2E; --amber-text:#E0A64F;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1726; --paper-2:#121D2F; --line:#24334A;
+  --ink:#E6ECF3; --muted:#9AA8BB; --card:#142037;
+  --navy:#09111D; --navy-2:#111C2E; --amber-text:#E0A64F;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--head);line-height:1.15;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:600;max-width:20ch}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+section{padding:104px 0}
+.alt{background:var(--paper-2)}
+.sec-num{font:500 .85rem var(--body);color:var(--amber-text);margin-bottom:14px;display:flex;gap:10px;align-items:center}
+.sec-num::before{content:"";width:28px;height:1px;background:var(--amber)}
+.lead{color:var(--muted);max-width:62ch;margin-top:18px}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--amber);color:var(--on-amber);padding:8px 14px;z-index:100}
+.skip:focus{left:8px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:var(--radius);font:600 .95rem var(--body);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.btn-primary{background:var(--amber);color:var(--on-amber)}
+.btn-primary:hover{background:#DDA04A}
+.btn-ghost{border-color:currentColor;color:inherit;background:transparent}
+.btn-ghost:hover{background:rgba(201,138,46,.12);border-color:var(--amber)}
+
+/* Progress + nav */
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--amber);width:0;z-index:60;padding-top:0}
+header.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(20,35,58,.0);color:var(--on-navy);transition:background .3s, box-shadow .3s}
+header.nav.scrolled{background:var(--navy);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:76px;transition:height .3s}
+header.nav.scrolled .nav-in{height:62px}
+.brand{font:700 .95rem var(--head);letter-spacing:.04em;text-decoration:none}
+.nav-links{display:flex;gap:28px;align-items:center;list-style:none;margin:0;padding:0}
+.nav-links a{text-decoration:none;font-size:.95rem;color:var(--on-navy-muted);position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--amber);transition:width .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--on-navy)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-links .btn{padding:9px 16px;color:var(--on-amber)}
+.nav-links .btn::after{display:none}
+.menu-btn{display:none;background:none;border:0;color:var(--on-navy);padding:8px;cursor:pointer}
+
+/* Hero */
+.hero{background:var(--navy);color:var(--on-navy);padding:150px 0 110px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;position:relative}
+.hero .role{color:var(--amber);font-weight:500;margin-bottom:18px}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:700;letter-spacing:-.02em;line-height:1.02}
+.hero .tagline{color:var(--on-navy-muted);font-size:1.15rem;max-width:46ch;margin-top:24px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.chips{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:40px;padding-top:26px;border-top:1px solid rgba(255,255,255,.1);font-size:.9rem;color:var(--on-navy-muted)}
+.chips span::before{content:"";display:inline-block;width:6px;height:6px;background:var(--amber);margin-right:9px;vertical-align:middle}
+
+/* Portrait with dimension lines — the signature element */
+.portrait{position:relative;padding:28px 0 0 28px}
+.photo{aspect-ratio:4/5;background:var(--navy-2);border:1px solid rgba(255,255,255,.12);position:relative;overflow:hidden;display:grid;place-items:center;color:var(--on-navy-muted);font-size:.85rem;text-align:center}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dim{position:absolute;color:var(--amber);font-size:.75rem}
+.dim-top{top:0;left:28px;right:0;height:14px;border-left:1px solid var(--amber);border-right:1px solid var(--amber)}
+.dim-top::before{content:"";position:absolute;left:0;right:0;top:7px;height:1px;background:var(--amber)}
+.dim-top span{position:absolute;left:50%;top:-4px;transform:translateX(-50%);background:var(--navy);padding:0 8px}
+.dim-left{left:0;top:28px;bottom:0;width:14px;border-top:1px solid var(--amber);border-bottom:1px solid var(--amber)}
+.dim-left::before{content:"";position:absolute;top:0;bottom:0;left:7px;width:1px;background:var(--amber)}
+.dim-left span{position:absolute;top:50%;left:7px;transform:translate(-50%,-50%) rotate(-90deg);background:var(--navy);padding:0 8px;white-space:nowrap}
+.tag{position:absolute;right:-14px;bottom:28px;background:var(--paper);color:var(--ink);padding:10px 14px;font-size:.85rem;font-weight:600;border-left:3px solid var(--amber);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+
+/* Profile */
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:64px}
+.stat{padding:28px 20px 0 0}
+.stat + .stat{padding-left:24px;border-left:1px solid var(--line)}
+.stat b{display:block;font:600 clamp(2rem,4vw,2.8rem) var(--head);color:var(--amber-text)}
+.stat span{color:var(--muted);font-size:.95rem}
+
+/* Experience timeline */
+.timeline{margin-top:56px;border-left:1px solid var(--line);padding-left:36px;display:grid;gap:48px}
+.job{position:relative;display:grid;grid-template-columns:200px 1fr;gap:32px}
+.job::before{content:"";position:absolute;left:-41px;top:6px;width:9px;height:9px;background:var(--paper);border:2px solid var(--amber)}
+.alt .job::before{background:var(--paper-2)}
+.job .when{color:var(--muted);font-size:.95rem}
+.job .when b{display:block;color:var(--ink);font-weight:600}
+.job h3{margin-bottom:4px}
+.job .co{color:var(--amber-text);font-weight:500;margin-bottom:12px}
+.job ul{margin:0;padding-left:18px;color:var(--muted)}
+.job li{margin:4px 0}
+.job .ach{margin-top:12px;font-size:.95rem}
+
+/* Projects */
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:56px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+.proj-img{aspect-ratio:16/9;background:var(--navy-2);position:relative;overflow:hidden}
+.proj-img img,.proj-img .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.proj:hover .proj-img img,.proj:hover .proj-img .ph{transform:scale(1.04)}
+.ph{background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:24px 24px;display:grid;place-items:center;color:var(--on-navy-muted);font-size:.85rem}
+.proj-body{padding:26px;display:flex;flex-direction:column;gap:14px;flex:1}
+.proj .type{font-size:.85rem;color:var(--amber-text);font-weight:600}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;font-size:.92rem;border-top:1px solid var(--line);padding-top:14px}
+.meta dt{color:var(--muted);font-size:.8rem}
+.meta dd{margin:0;font-weight:500}
+.proj .btn{align-self:flex-start;margin-top:auto;color:var(--ink)}
+
+/* Modal */
+dialog{border:0;padding:0;border-radius:var(--radius);max-width:760px;width:calc(100% - 32px);max-height:88vh;background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(9,17,29,.7)}
+dialog[open]{animation:pop .3s ease}
+@keyframes pop{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.modal-head{background:var(--navy);color:var(--on-navy);padding:28px 32px;position:sticky;top:0;display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.modal-head small{color:var(--amber);display:block;margin-bottom:6px}
+.close{background:none;border:1px solid rgba(255,255,255,.25);color:var(--on-navy);width:38px;height:38px;border-radius:50%;cursor:pointer;flex:none;font-size:1.1rem}
+.modal-body{padding:8px 32px 32px}
+.modal-body h4{font:600 1rem var(--head);margin:26px 0 8px}
+.modal-body p,.modal-body li{color:var(--muted)}
+
+/* Process */
+.process{display:grid;grid-template-columns:repeat(5,1fr);margin-top:56px;counter-reset:s}
+.step{padding:0 22px 0 0;position:relative}
+.step .n{font:600 .9rem var(--head);color:var(--amber-text);display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.step .n::after{content:"";flex:1;height:1px;background:var(--line)}
+.step h3{font-size:1.02rem;margin-bottom:8px}
+.step p{color:var(--muted);font-size:.95rem}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:56px}
+.skills h3{padding-bottom:14px;border-bottom:2px solid var(--ink);margin-bottom:6px}
+.skills ul{list-style:none;margin:0;padding:0}
+.skills li{padding:11px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+.software{margin-top:88px}
+.soft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:32px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.soft{padding:20px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.soft b{font-weight:600}
+.soft span{color:var(--muted);font-size:.88rem}
+
+/* Resume CTA */
+.resume{padding:72px 0}
+.resume-in{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;border:1px solid var(--line);border-left:4px solid var(--amber);padding:40px;background:var(--card);border-radius:var(--radius)}
+.resume-in p{color:var(--muted);max-width:56ch;margin-top:10px}
+.resume-in .btn{color:var(--ink)}
+
+/* Contact */
+.contact{background:var(--navy);color:var(--on-navy)}
+.contact h2{font-size:clamp(2.2rem,5vw,3.8rem);max-width:16ch}
+.contact .lead{color:var(--on-navy-muted)}
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;border-top:1px solid rgba(255,255,255,.12)}
+.contact-grid div{padding:24px 20px 0 0}
+.contact-grid small{display:block;color:var(--on-navy-muted);font-size:.85rem;margin-bottom:4px}
+.contact-grid a,.contact-grid span{font-weight:500;text-decoration:none;word-break:break-word}
+.contact-grid a:hover{color:var(--amber)}
+.contact .btn{margin-top:48px}
+
+footer{background:var(--navy);color:var(--on-navy-muted);border-top:1px solid rgba(255,255,255,.08);padding:36px 0;font-size:.9rem}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot b{color:var(--on-navy);font-family:var(--head)}
+.foot nav{display:flex;gap:22px}
+.foot a{text-decoration:none}.foot a:hover{color:var(--amber)}
+.copy{margin-top:20px;font-size:.82rem}
+
+#top{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));width:44px;height:44px;border-radius:50%;border:0;background:var(--amber);color:var(--on-amber);cursor:pointer;font-size:1.1rem;opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
+#top.show{opacity:1;pointer-events:auto}
+
+/* Load sequence (hero only) */
+.load{opacity:0;transform:translateY(14px);animation:in .6s ease forwards}
+.d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}.d4{animation-delay:.42s}.d5{animation-delay:.25s}
+@keyframes in{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+  .load{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* Responsive */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr 1fr;gap:40px}
+  .process{grid-template-columns:repeat(3,1fr);row-gap:40px}
+  .soft-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:repeat(2,1fr);row-gap:8px}
+}
+@media (max-width:860px){
+  .menu-btn{display:block}
+  .nav-links{position:fixed;top:calc(62px + env(safe-area-inset-top,0px));left:0;right:0;background:var(--navy);flex-direction:column;align-items:flex-start;gap:0;padding:8px 24px 24px;display:none;border-top:1px solid rgba(255,255,255,.08)}
+  .nav-links.open{display:flex}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:14px 0}
+  .nav-links .btn{display:inline-flex;margin-top:12px;padding:12px 20px}
+  header.nav{background:var(--navy)}
+  .hero{padding:120px 0 80px}
+  .hero-grid,.profile-grid{grid-template-columns:1fr}
+  .portrait{max-width:380px}
+  .projects,.skills{grid-template-columns:1fr}
+  .skills{gap:40px}
+  .job{grid-template-columns:1fr;gap:8px}
+}
+@media (max-width:600px){
+  section{padding:76px 0}
+  .wrap{padding:0 20px}
+  .stats{grid-template-columns:1fr}
+  .stat,.stat + .stat{padding:20px 0;border-left:0;border-bottom:1px solid var(--line)}
+  .process{grid-template-columns:1fr;border-left:1px solid var(--line);padding-left:24px}
+  .step{padding:0}
+  .step .n::after{display:none}
+  .soft-grid,.contact-grid{grid-template-columns:1fr}
+  .meta{grid-template-columns:1fr}
+  .resume-in{padding:28px}
+  .tag{right:0}
+  .modal-head,.modal-body{padding-left:22px;padding-right:22px}
+  .timeline{padding-left:26px}
+  .job::before{left:-31px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#home" class="brand" data-bind="name-upper">WARREN IVAN BALUIS</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="btn btn-primary">Let's work together</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero" id="home" aria-labelledby="hero-name">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="role load d1">Quantity Estimator / Cost Engineer</p>
+        <h1 id="hero-name" class="load d1" data-bind="name">Warren Ivan Baluis</h1>
+        <p class="tagline load d2">Turning drawings, specifications, and project requirements into accurate quantities, detailed estimates, and informed construction cost decisions.</p>
+        <div class="hero-actions load d3">
+          <a href="#projects" class="btn btn-primary">View my projects</a>
+          <a href="#" class="btn btn-ghost" data-bind="resume-link" download>Download résumé</a>
+        </div>
+        <div class="chips load d4">
+          <span>Quantity takeoff</span><span>Cost estimation</span><span>BOQ preparation</span><span>Cost control</span>
+        </div>
+      </div>
+      <div class="portrait load d5">
+        <div class="dim dim-top"><span>Quantity Estimator</span></div>
+        <div class="dim dim-left"><span>Cost Engineering</span></div>
+        <div class="photo" id="photo">
+          <span>Profile photo<br>images/profile.jpg</span>
+        </div>
+        <div class="tag" data-bind="location">Philippines</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profile" aria-labelledby="profile-h">
+    <div class="wrap">
+      <div class="profile-grid">
+        <div>
+          <p class="sec-num">01 / Profile</p>
+          <h2 id="profile-h">Precision in every quantity. Clarity in every cost.</h2>
+        </div>
+        <p class="lead" id="aboutText"></p>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="alt" aria-labelledby="exp-h">
+    <div class="wrap">
+      <p class="sec-num">02 / Experience</p>
+      <h2 id="exp-h">Project experience</h2>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" aria-labelledby="proj-h">
+    <div class="wrap">
+      <p class="sec-num">03 / Selected projects</p>
+      <h2 id="proj-h">Selected projects</h2>
+      <div class="projects" id="projectList"></div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section id="approach" class="alt" aria-labelledby="app-h">
+    <div class="wrap">
+      <p class="sec-num">04 / Approach</p>
+      <h2 id="app-h">From drawings to cost certainty</h2>
+      <ol class="process" id="process" style="list-style:none;padding:0"></ol>
+    </div>
+  </section>
+
+  <!-- SKILLS + SOFTWARE -->
+  <section id="skills" aria-labelledby="sk-h">
+    <div class="wrap">
+      <p class="sec-num">05 / Expertise</p>
+      <h2 id="sk-h">Technical expertise</h2>
+      <div class="skills" id="skillGroups"></div>
+      <div class="software">
+        <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem)">Tools I work with</h2>
+        <div class="soft-grid" id="softGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section class="resume alt" aria-labelledby="res-h">
+    <div class="wrap">
+      <div class="resume-in">
+        <div>
+          <h2 id="res-h" style="font-size:clamp(1.5rem,2.8vw,2rem)">Want the full story?</h2>
+          <p>Download my résumé for a detailed overview of my experience, project history, technical skills, and qualifications.</p>
+        </div>
+        <a href="#" class="btn btn-ghost" data-bind="resume-link" download>Download résumé</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact" aria-labelledby="con-h">
+    <div class="wrap">
+      <p class="sec-num">06 / Contact</p>
+      <h2 id="con-h">Let's build something accurate.</h2>
+      <p class="lead">Whether you need quantity takeoff, cost estimation, BOQ preparation, or construction cost analysis, let's discuss your project.</p>
+      <div class="contact-grid" id="contactGrid"></div>
+      <a href="#" class="btn btn-primary" data-bind="email-link">Get in touch</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><b data-bind="name-upper">WARREN IVAN BALUIS</b><br>Quantity Estimator | Cost Engineer</div>
+      <nav aria-label="Footer">
+        <a href="#" data-bind="linkedin-link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#" data-bind="email-link">Email</a>
+        <a href="#" data-bind="resume-link" download>Résumé</a>
+      </nav>
+    </div>
+    <p class="copy">© 2026 <span data-bind="name">Warren Ivan Baluis</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<button id="top" aria-label="Back to top">↑</button>
+
+<dialog id="modal" aria-labelledby="m-title">
+  <div class="modal-head">
+    <div><small id="m-type"></small><h3 id="m-title" style="font-size:1.4rem"></h3></div>
+    <button class="close" id="m-close" aria-label="Close case study">✕</button>
+  </div>
+  <div class="modal-body" id="m-body"></div>
+</dialog>
+
+<script>
+/* =========================================================
+   EDIT YOUR CONTENT HERE
+   Replace every "XXX" with your real details.
+   Leave a field as "" to show it blank.
+   ========================================================= */
+const PROFILE = {
+  name: "Warren Ivan Baluis",
+  location: "Philippines",
+  email: "XXX",            // e.g. "warren@email.com"
+  phone: "XXX",            // e.g. "+63 9XX XXX XXXX"
+  linkedin: "XXX",         // e.g. "https://linkedin.com/in/..."
+  photo: "images/profile.jpg",
+  resume: "documents/Warren-Ivan-Baluis-Resume.pdf",
+  about: "I specialize in quantity takeoff, cost estimation, BOQ preparation, and construction cost analysis. I support project teams with reliable estimating information so budgets, bids, and decisions rest on accurate numbers. XXX",
+  stats: [
+    { value: "XXX", label: "Projects supported" },
+    { value: "XXX", label: "Takeoff items" },
+    { value: "XXX", label: "Estimate accuracy" }
+  ]
+};
+
+const EXPERIENCE = [
+  {
+    position: "Quantity Estimator",
+    company: "XXX",
+    dates: "XXX – Present",
+    location: "XXX",
+    responsibilities: [
+      "Prepared detailed quantity takeoffs from architectural, structural, and MEP drawings.",
+      "Developed BOQs and construction cost estimates.",
+      "Reviewed drawings and specifications.",
+      "Assisted with bid preparation and tender documentation."
+    ],
+    achievements: "XXX"
+  },
+  {
+    position: "XXX",
+    company: "XXX",
+    dates: "XXX – XXX",
+    location: "XXX",
+    responsibilities: ["XXX", "XXX", "XXX"],
+    achievements: "XXX"
+  },
+  {
+    position: "XXX",
+    company: "XXX",
+    dates: "XXX – XXX",
+    location: "XXX",
+    responsibilities: ["XXX", "XXX"],
+    achievements: "XXX"
+  }
+];
+
+const PROJECTS = [
+  {
+    title: "XXX",
+    type: "Commercial building",
+    role: "Quantity Estimator",
+    image: "",   // e.g. "images/project-1.jpg" (no leading slash)
+    scope: "Architectural + Structural",
+    responsibilities: ["Detailed quantity takeoff", "BOQ preparation", "Material quantity analysis", "Cost estimation", "Drawing review"],
+    value: "XXX", takeoff: "XXX", location: "XXX", date: "XXX",
+    caseStudy: { overview: "XXX", scope: "XXX", process: "XXX", deliverables: "XXX", challenges: "XXX", approach: "XXX", results: "XXX" }
+  },
+  {
+    title: "XXX",
+    type: "Residential development",
+    role: "XXX",
+    image: "",
+    scope: "XXX",
+    responsibilities: ["XXX", "XXX", "XXX"],
+    value: "XXX", takeoff: "XXX", location: "XXX", date: "XXX",
+    caseStudy: { overview: "XXX", scope: "XXX", process: "XXX", deliverables: "XXX", challenges: "XXX", approach: "XXX", results: "XXX" }
+  },
+  {
+    title: "XXX",
+    type: "Industrial facility",
+    role: "XXX",
+    image: "",
+    scope: "XXX",
+    responsibilities: ["XXX", "XXX", "XXX"],
+    value: "XXX", takeoff: "XXX", location: "XXX", date: "XXX",
+    caseStudy: { overview: "XXX", scope: "XXX", process: "XXX", deliverables: "XXX", challenges: "XXX", approach: "XXX", results: "XXX" }
+  },
+  {
+    title: "XXX",
+    type: "Infrastructure",
+    role: "XXX",
+    image: "",
+    scope: "XXX",
+    responsibilities: ["XXX", "XXX", "XXX"],
+    value: "XXX", takeoff: "XXX", location: "XXX", date: "XXX",
+    caseStudy: { overview: "XXX", scope: "XXX", process: "XXX", deliverables: "XXX", challenges: "XXX", approach: "XXX", results: "XXX" }
+  }
+];
+
+const PROCESS = [
+  { title: "Drawing review", text: "Review architectural, structural, and MEP drawings and project specifications." },
+  { title: "Quantity takeoff", text: "Measure and quantify required materials, labor, and construction components." },
+  { title: "BOQ development", text: "Organize quantities into a clear, structured Bill of Quantities." },
+  { title: "Cost estimation", text: "Apply material, labor, equipment, subcontractor, and other relevant costs." },
+  { title: "Review & value engineering", text: "Check quantities, identify discrepancies, and evaluate cost-saving opportunities." }
+];
+
+const SKILLS = [
+  { group: "Estimating", items: ["Quantity takeoff", "Material takeoff", "Labor estimation", "BOQ preparation", "Bid preparation", "Tender documentation"] },
+  { group: "Cost engineering", items: ["Cost estimation", "Cost control", "Budget monitoring", "Cost analysis", "Change order evaluation", "Value engineering"] },
+  { group: "Documentation", items: ["Drawing review", "Specification review", "Quantity verification", "Cost reporting", "Procurement support"] }
+];
+
+/* Keep only the software you actually use; set level to your real proficiency. */
+const SOFTWARE = [
+  { name: "Microsoft Excel", level: "XXX" },
+  { name: "AutoCAD", level: "XXX" },
+  { name: "Bluebeam", level: "XXX" },
+  { name: "PlanSwift", level: "XXX" },
+  { name: "Revit", level: "XXX" },
+  { name: "MS Project", level: "XXX" },
+  { name: "Primavera P6", level: "XXX" },
+  { name: "CostX", level: "XXX" },
+  { name: "On-Screen Takeoff", level: "XXX" }
+];
+
+/* =========================================================
+   RENDERING — no need to edit below this line
+   ========================================================= */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+
+// Bind profile basics
+document.querySelectorAll('[data-bind="name"]').forEach(el => el.textContent = PROFILE.name);
+document.querySelectorAll('[data-bind="name-upper"]').forEach(el => el.textContent = PROFILE.name.toUpperCase());
+document.querySelectorAll('[data-bind="location"]').forEach(el => el.textContent = PROFILE.location);
+document.querySelectorAll('[data-bind="resume-link"]').forEach(el => el.href = PROFILE.resume);
+document.querySelectorAll('[data-bind="email-link"]').forEach(el => el.href = "mailto:" + PROFILE.email);
+document.querySelectorAll('[data-bind="linkedin-link"]').forEach(el => el.href = PROFILE.linkedin.startsWith("http") ? PROFILE.linkedin : "#");
+
+// Photo: shows placeholder until /images/profile.jpg exists
+const img = new Image();
+img.alt = "Portrait of " + PROFILE.name;
+img.onload = () => $("#photo").appendChild(img);
+img.src = PROFILE.photo;
+
+$("#aboutText").textContent = PROFILE.about;
+$("#stats").innerHTML = PROFILE.stats.map(s => `<div class="stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("");
+
+$("#timeline").innerHTML = EXPERIENCE.map(j => `
+  <article class="job">
+    <div class="when"><b>${esc(j.dates)}</b>${esc(j.location)}</div>
+    <div>
+      <h3>${esc(j.position)}</h3>
+      <p class="co">${esc(j.company)}</p>
+      <ul>${j.responsibilities.map(r => `<li>${esc(r)}</li>`).join("")}</ul>
+      ${j.achievements ? `<p class="ach"><strong>Key achievements:</strong> ${esc(j.achievements)}</p>` : ""}
+    </div>
+  </article>`).join("");
+
+$("#projectList").innerHTML = PROJECTS.map((p, i) => `
+  <article class="proj">
+    <div class="proj-img">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.title)} project">` : `<div class="ph">Project image</div>`}</div>
+    <div class="proj-body">
+      <p class="type">${esc(p.type)}</p>
+      <h3>${esc(p.title)}</h3>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>${esc(p.role)}</dd></div>
+        <div><dt>Scope</dt><dd>${esc(p.scope)}</dd></div>
+        <div><dt>Project value</dt><dd>${esc(p.value)}</dd></div>
+        <div><dt>Takeoff</dt><dd>${esc(p.takeoff)}</dd></div>
+        <div><dt>Location</dt><dd>${esc(p.location)}</dd></div>
+        <div><dt>Date</dt><dd>${esc(p.date)}</dd></div>
+      </dl>
+      <button class="btn btn-ghost" data-case="${i}">View case study</button>
+    </div>
+  </article>`).join("");
+
+$("#process").innerHTML = PROCESS.map((s, i) => `
+  <li class="step"><p class="n">${String(i + 1).padStart(2, "0")}</p><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></li>`).join("");
+
+$("#skillGroups").innerHTML = SKILLS.map(g => `
+  <div><h3>${esc(g.group)}</h3><ul>${g.items.map(i => `<li>${esc(i)}</li>`).join("")}</ul></div>`).join("");
+
+$("#softGrid").innerHTML = SOFTWARE.map(s => `<div class="soft"><b>${esc(s.name)}</b><span>${esc(s.level)}</span></div>`).join("");
+
+const linkedinOk = PROFILE.linkedin.startsWith("http");
+$("#contactGrid").innerHTML = `
+  <div><small>Email</small><a href="mailto:${esc(PROFILE.email)}">${esc(PROFILE.email)}</a></div>
+  <div><small>Phone</small><a href="tel:${esc(PROFILE.phone.replace(/\s/g, ""))}">${esc(PROFILE.phone)}</a></div>
+  <div><small>LinkedIn</small>${linkedinOk ? `<a href="${esc(PROFILE.linkedin)}" target="_blank" rel="noopener">View profile</a>` : `<span>${esc(PROFILE.linkedin)}</span>`}</div>
+  <div><small>Location</small><span>${esc(PROFILE.location)}</span></div>`;
+
+// Case study modal
+const modal = $("#modal");
+const sections = [["overview","Project overview"],["scope","Scope of work"],["process","Estimating process"],["deliverables","Deliverables"],["challenges","Challenges"],["approach","Solution / approach"],["results","Results"]];
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-case]");
+  if (!b) return;
+  const p = PROJECTS[b.dataset.case];
+  $("#m-type").textContent = p.type;
+  $("#m-title").textContent = p.title;
+  $("#m-body").innerHTML = sections.map(([k, label]) => `<h4>${label}</h4><p>${esc(p.caseStudy[k])}</p>`).join("");
+  modal.showModal();
+});
+$("#m-close").onclick = () => modal.close();
+modal.addEventListener("click", e => { if (e.target === modal) modal.close(); });
+
+// Mobile menu
+const menuBtn = $("#menuBtn"), links = $("#navLinks");
+menuBtn.onclick = () => {
+  const open = links.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", open);
+  menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+};
+links.querySelectorAll("a").forEach(a => a.onclick = () => { links.classList.remove("open"); menuBtn.setAttribute("aria-expanded", false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && links.classList.contains("open")) { links.classList.remove("open"); menuBtn.setAttribute("aria-expanded", false); menuBtn.focus(); } });
+
+// Scroll: nav state, progress bar, back-to-top, active link
+const nav = $("#nav"), bar = $("#progress"), topBtn = $("#top");
+const navAnchors = [...links.querySelectorAll('a[href^="#"]:not(.btn)')];
+const ids = navAnchors.map(a => a.getAttribute("href").slice(1));
+function onScroll() {
+  const y = window.scrollY, h = document.documentElement.scrollHeight - innerHeight;
+  nav.classList.toggle("scrolled", y > 40);
+  bar.style.width = (h > 0 ? (y / h) * 100 : 0) + "%";
+  topBtn.classList.toggle("show", y > 600);
+  let current = ids[0];
+  ids.forEach(id => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top < 140) current = id; });
+  navAnchors.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + current));
+}
+addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+topBtn.onclick = () => scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+</script>
+</body>
+</html>
